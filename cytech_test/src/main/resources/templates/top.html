@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>トップ</title>
+<link th:href="@{/css/common/header.css}" rel="stylesheet">
+<link th:href="@{/css/common/footer.css}" rel="stylesheet">
+<link th:href="@{/css/pages/top.css}" rel="stylesheet">
+</head>
+<body>
+	<header th:replace="common/header :: layout-header"></header>
+	<h2>TOP画面</h2>
+	<p class="sale">セール品</p>
+	<div class="sales-list">
+		<div th:each="salesItem:${salesItems}">
+			<a class="sales-items" th:href="@{'/items/detail/' + ${salesItem.product.id}}">
+			<img class="sales-img" th:src="@{${salesItem.salesImgPath}}" alt="商品画像">
+			</a>
+		</div>
+	</div>
+	<footer th:replace="common/footer :: layout-footer"></footer>
+</body>
+</html>

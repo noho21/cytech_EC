@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+h1,
+.user-info,
+.btn-top {
+	margin-left: 50px;
+}
+
+.user-info {
+	font-size: 20px;
+}
+
+.btn-top {
+	text-align: center;
+	display: inline-block;
+	text-decoration: none;
+	background-color: #5f9ea0;
+	color: white;
+	border-radius: 4px;
+	font-size: 20px;
+	margin: 10px auto;
+	padding: 6px 8px;
+}
+
+.btn-top:hover {
+	box-shadow: 5px 0 3px #778899;
+}

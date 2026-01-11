@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+.purchase__title,
+.purchase {
+	margin-left: 60px;
+}
+
+.purchase__option {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.purchase__label {
+	flex-shrink: 0;
+	accent-color: #2979ff;
+}
+
+.purchase__field {
+	flex: 1; 
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	border: 1px solid #ccc;
+	margin: 10px 30px;
+	padding: 10px 6px;
+}
+
+.purchase__input {
+	padding: 8px;
+	border-color: #ccc;
+	border-radius: 4px;
+}
+
+.purchase__card-number {
+	width: 50%;
+}
+
+.purchase__card-expiry {
+	width: 25%;
+}
+
+.btn-purchase-confirm {
+	color: white;
+	background-color: blue;
+	border-color: blue;
+	border-radius: 4px;
+	margin-bottom: 20px;
+	padding: 4px 6px;
+}
+
+.btn-purchase-confirm:hover {
+	background-color: #0000cd;
+	box-shadow: 5px 0 3px #778899;
+}
+
+.purchase__error {
+	color: red;
+}

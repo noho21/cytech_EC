@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+body {
+	background-color: beige;
+}
+
+h1,
+.login-form,
+.error-message,
+.logout-message {
+	text-align: center;
+}
+
+.form-group {
+  text-align: left;
+  margin: 0 auto 12px;
+  width: 500px;
+}  
+
+.form-group label {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 20px;
+}
+
+.form-group input {
+	width: 100%;
+	height: 44px;
+	padding: 0 12px;
+	font-size: 16px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+}
+
+.btn-area {
+	 width: 500px;
+	 margin: 20px auto 12px;
+}
+
+.login-btn,
+.register-btn {
+	font-size: 20px;
+	border-radius: 4px;
+	color: white;
+	background-color: blue;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+	background-color: #0000cd;
+	box-shadow: 5px 0 3px #778899;
+}
+
+.login-btn {
+	border-color: blue;
+	padding:6px 14px;
+}
+
+.register-btn {
+	display: inline-block;
+	text-decoration: none;
+	margin-left: 200px;
+	padding:8px 14px;
+}
+
+.error-message {
+	color: red;
+}

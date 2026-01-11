@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.purchase-confirm__title,
+.purchase-confirm {
+	margin-left:60px;
+}
+
+.btn-group {
+	display: flex;
+	margin-left: 80px;
+}
+
+.btn-edit {
+	background-color: red;
+	color: white;
+	border-color: red;
+	border-radius: 4px;
+	padding: 8px 10px;
+}
+
+.btn-purchase {
+	background-color: blue;
+	color: white;
+	border-color: blue;
+	border-radius: 4px;
+	padding: 8px 10px;
+	margin-left: 80px;
+}

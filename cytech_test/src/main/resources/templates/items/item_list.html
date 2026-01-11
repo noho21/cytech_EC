@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>商品一覧</title>
+<link th:href="@{/css/common/header.css}" rel="stylesheet">
+<link th:href="@{/css/common/footer.css}" rel="stylesheet">
+<link th:href="@{/css/pages/item_list.css}" rel="stylesheet">
+</head>
+<body>
+	<header th:replace="~{common/header :: layout-header}"></header>
+	
+	<h2>商品一覧画面</h2>
+	
+	<div class="item-list">
+		<div class="item-list__card" th:each="product:${productList}">
+			<a th:href="@{'/items/detail/' + ${product.id}}">
+				<img class="item-list__img" th:src="@{${product.imgPath}}" alt="商品画像">
+			</a>
+			
+			<div class="item-list__info">
+				<p th:text="${product.productName}"></p>
+				<p th:text="${product.company.companyName}"></p>
+				<p>¥<span th:text="${product.price}"></span></p>
+				<p>¥<span th:text="${product.includeTax}"></span>（税込）</p>
+			</div>
+		</div>
+	</div>
+	
+	<footer th:replace="~{common/footer :: layout-footer}"></footer>
+</body>
+</html>

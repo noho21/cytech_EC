@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>購入完了</title>
+<link th:href="@{/css/common/header.css}" rel="stylesheet">
+<link th:href="@{/css/common/footer.css}" rel="stylesheet">
+<link th:href="@{/css/pages/purchase_complete.css}" rel="stylesheet">
+</head>
+<body>
+	<header th:replace="~{common/header :: layout-header}"></header>
+	
+	<h1 class="purchase-complete__title">購入完了画面</h1>
+	
+	<div class="purchase-complete">
+		<div class="purchase-complete__detail">
+			<div class="purchase-complete__item" th:each="item : ${order.orderItems}">
+				<p>画像：</p>
+				<img class="purchase-complete__item-img" th:src="@{${item.product.imgPath}}" width="150">
+				<p>商品名：<span th:text="${item.product.productName}"></span></p>
+				<p>数量：<span th:text="${item.quantity}"></span></p>
+				<p>税込価格：<span th:text="${item.price * 110 / 100}"></span>円</p>
+			</div>
+			
+			<div class="purchase-complete__address">
+				<p>住所：<span th:text="${user.userAddress + ' ' + (user.buildingAddress ?: '')}"></span></p>
+			</div>
+		</div>
+		<h1 class="purchase-complete__mesaage">注文完了</h1>
+	</div>
+	
+	<a class="btn-top" th:href="@{/top}">TOP画面に戻る</a>
+	
+	<footer th:replace="~{common/footer :: layout-footer}"></footer>
+</body>
+</html>

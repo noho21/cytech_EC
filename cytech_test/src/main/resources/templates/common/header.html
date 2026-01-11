@@ -1,0 +1,33 @@
+<header class="site-header" th:fragment="layout-header">
+	<div class="header__logo">
+		<a th:href="@{/top}">Cytech EC.</a>
+	</div>
+	
+	<div class="search-form">
+		<form th:action="@{/items/search}" method="get">
+			<input class="search-keyword" type="text" name="keyword" placeholder="商品名">
+			
+			<select class="search-category" name="categoryId">
+				<option value="">カテゴリ選択</optio>
+				<option th:each="category : ${categories}"
+						th:value="${category.id}"
+						th:text="${category.categoryName}"></option>
+			</select>
+			
+			<button class="search-btn" type="submit">検索</button>
+		</form>
+	</div>
+		
+	<div class="btn-group">
+		<a class="btn btn--cart" th:href="@{/cart/list}">カート</a>
+		<a class="btn btn--mypage" th:href="@{/user/mypage}">マイページ</a>
+	</div>
+	
+	<div class="header__user">
+		<p class="header__username">ユーザー名：<span th:text="${loginUserName}"></span></p>
+	
+		<form th:action="@{/logout}" method="post">
+			<button class="logout-btn" type="submit">ログアウト</button>
+		</form>
+	</div>
+</header>

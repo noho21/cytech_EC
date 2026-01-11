@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.purchase-complete__title {
+	margin-left: 30px;
+}
+
+.purchase-complete {
+	display: flex;
+	margin-left: 60px;
+}
+
+.purchase-complete__item-img {
+	width: 200px;
+	height: 150px;
+	object-fit: contain;
+}
+
+.purchase-complete__mesaage {
+	margin-left: 20px;
+}
+
+.btn-top {
+	text-align: center;
+	display: inline-block;
+	text-decoration: none;
+	background-color: #5f9ea0;
+	color: white;
+	border-radius: 4px;
+	font-size: 20px;
+	margin: 10px auto;
+	padding: 6px 8px;
+}

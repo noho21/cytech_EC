@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>カート内詳細</title>
+<script th:src="@{/js/cart_list.js}" defer></script>
+<link th:href="@{/css/common/header.css}" rel="stylesheet">
+<link th:href="@{/css/common/footer.css}" rel="stylesheet">
+<link th:href="@{/css/pages/cart_list.css}" rel="stylesheet">
+</head>
+<body>
+	<header th:replace="~{common/header :: layout-header}"></header>
+	
+	<div class="cart-list__layout">
+		<main class="cart-list__main">
+			<h1 class="cart-list__title">カート内詳細画面</h1>
+			
+			<div class="cart-list__nothing" th:if="${#lists.isEmpty(cartItems)}">
+		    	<p>カートに商品は入っていません。</p>
+			</div>
+			
+			<div class="cart-list">
+				<div class="cart-list__item" th:each="cart : ${cartItems}">
+					
+					<img class="cart-list__item-img" th:src="@{${cart.product.imgPath}}" alt="商品画像">
+					
+					<div class="cart-list__item-detail">
+						<p>商品名；
+							<span th:text="${cart.product.productName}">
+						</p>
+						<p>数量：</p>
+						<select class="cart-list__quantity-select"
+								name="quantity"
+								th:data-unit-price="${cart.product.price}"
+				        		th:data-unit-tax="${cart.product.includeTax}">
+				      			<option th:each="i : ${#numbers.sequence(1, cart.product.stock)}"
+				              		th:value="${i}"
+				              		th:text="${i}"
+				              		th:selected="${i == cart.quantity}">
+				      			</option>
+				    	</select>
+						<form th:action="@{/cart/delete}" method="post">
+				        	<input type="hidden" name="cartId" th:value="${cart.id}">
+				        	<button class="btn-delete" type="submit">削除</button>
+				    	</form>
+						<p>価格：
+							<span class="price"
+								  th:text="${cart.product.price * cart.quantity}">
+				  			</span>
+				  			円
+						</p>
+						<p>消費税込み金額：
+							<span class="tax-price"
+				        		  th:text="${cart.product.includeTax * cart.quantity}">
+				  			</span>
+				  			円
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		
+		<aside class="cart-list__aside" th:if="${!#lists.isEmpty(cartItems)}">
+			<p>個数：
+				<span class="sidebar-quantity"
+          			th:text="${totalQuantity}">
+    			</span>
+			</p>
+			<p>金額：
+				<span class="sidebar-price"
+				  th:text="${totalPrice}">
+				</span>
+				円
+			</p>
+			<p>消費税込み金額：
+				<span class="sidebar-tax-price"
+        		  th:text="${totalTaxPrice}">
+				</span>
+				円
+			</p>
+			<form th:action="@{/purchase/cart/start}" method="post">
+  				<button class="btn-purchase" type="submit">レジに進む</button>
+			</form>
+	
+		</aside>
+	</div>
+	<footer th:replace="~{common/footer :: layout-footer}"></footer>
+</body>
+</html>
+

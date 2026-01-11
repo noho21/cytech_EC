@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>新規登録</title>
+<link th:href="@{/css/common/footer.css}" rel="stylesheet">
+<link th:href="@{/css/pages/register.css}" rel="stylesheet">
+</head>
+<body>
+	<h1 class="user-register__title">ユーザー新規登録画面</h1>
+	
+	<div　class="user-register">
+		<form class="user-register__form" method="post" th:action="@{/user/register}" th:object="${userRegisterForm}">
+			<div class="user-register__field">
+				<label class="user-register__label" for="name">ユーザ名</label>
+				<input class="user-register__input" type="text" id="name" th:field="*{userName}">
+				<span class="user-register__error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span>
+			</div>
+				
+			<div class="user-register__field">
+				<label class="user-register__label" for="kana">かな</label>
+				<input class="user-register__input" type="text" id="kana" th:field="*{userNameKana}">
+				<span class="user-register__error" th:if="${#fields.hasErrors('userNameKana')}" th:errors="*{userNameKana}"></span>
+			</div>				
+			
+			<div class="user-register__field">
+				<label class="user-register__label" for="email">メールアドレス</label>
+				<input class="user-register__input" type="email" id="email" th:field="*{email}">
+				<span class="user-register__error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			</div>				
+			
+			<div class="user-register__field">
+				<label class="user-register__label" >パスワード</labelclass="user-register__label">
+				<input class="user-register__input" type="password" th:field="*{password}">
+				<span class="user-register__error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+			</div>
+			
+			<div class="user-register__field">
+				<label class="user-register__label">パスワード（確認用）</label>
+				<input class="user-register__input" type="password" th:field="*{passwordConfirm}">
+				<span class="user-register__error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span>
+			</div>
+				
+			
+			<div class="user-register__field">
+				<label class="user-register__label" for="phone">電話番号</label>
+				<input class="user-register__input" type="text" id="phone" th:field="*{phone}">
+				<span class="user-register__error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+			</div>
+			
+			<div class="user-register__field">
+				<label class="user-register__label">住所</label>
+				<input class="user-register__input" type="text" th:field="*{userAddress}">
+				<span class="user-register__error" th:if="${#fields.hasErrors('userAddress')}" th:errors="*{userAddress}"></span>
+			</div>
+				
+			<div class="user-register__field">
+				<label class="user-register__label">アパート名等</label>
+				<input class="user-register__input" type="text" th:field="*{buildingAddress}">
+			</div>
+			
+			<div class="btn-group">
+				<button class="btn-register" type="submit">登録</button>
+				<a class="btn-back" th:href="@{/login}">戻る</a>
+			</div>
+		</form>
+	</div>
+
+	
+	<footer th:replace="common/footer :: layout-footer"></footer>
+</body>
+</html>

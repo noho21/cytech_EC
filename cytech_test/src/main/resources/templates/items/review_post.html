@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>口コミ投稿</title>
+<link th:href="@{/css/common/header.css}" rel="stylesheet">
+<link th:href="@{/css/common/footer.css}" rel="stylesheet">
+<link th:href="@{/css/pages/review_post.css}" rel="stylesheet">
+</head>
+<body>
+	<header th:replace="~{common/header :: layout-header}"></header>
+	
+	<h1 class="review-post__title">口コミ投稿画面</h1>
+	
+	<div class="review-post">
+		<form class="review-post__form" method="post"
+			  th:action="@{/reviews/{id}/post(id=${productId})}"
+			  th:object="${reviewPostForm}"
+			  enctype="multipart/form-data">
+			  
+		  <input type="hidden"
+    	   th:name="${_csrf.parameterName}"
+	       th:value="${_csrf.token}">
+	
+			<div class="review-post__field">
+				<label class="review-post__label" for="name">ユーザー名（任意）</label>
+				<input class="review-post__input" type="text" id="name" th:field="*{dummyUserName}" placeholder="ユーザー名">
+			</div>
+
+			<div class="review-post__field">
+				<label class="review-post__label" for="rating">評価</label>
+				<select class="review-post__select" id="rating" th:field="*{rating}">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</div>
+			
+			<div class="review-post__field">
+				<label class="review-post__label" for="mail">メールアドレス</label>
+				<input class="review-post__input"  type="email" id="mail" th:field="*{email}"  placeholder="メールアドレス">
+				<span class="review-post__error"
+					  th:if="${#fields.hasErrors('email')}"
+					  th:errors="*{email}"></span>
+			</div>
+			
+			<div class="review-post__field">
+				<label class="review-post__label" for="comment">コメント</label>
+				<textarea class="review-post__textarea"
+						  id="comment"
+						  th:field="*{comment}"
+						  cols="100"
+						  rows="3"
+						  maxlength="300"></textarea>
+				<span class="review-post__error"
+					  th:if="${#fields.hasErrors('comment')}"
+					  th:errors="*{comment}"></span>
+			</div>
+				  
+			<div class="review-post__field">
+				<input class="review-post__file" type="file" th:field="*{reviewImage}">
+				<span class="review-post__error"
+					  th:if="${#fields.hasErrors('reviewImage')}"
+					  th:errors="*{reviewImage}"></span>
+			</div>
+	
+			<button class="btn-review-post" type="submit">投稿</button>
+		</form>	
+	</div>
+	
+	<footer th:replace="~{common/footer :: layout-footer}"></footer>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+.review-post__title,
+.review-post {
+	margin-left: 60px;
+}
+
+.review-post {
+	margin-right: 60px;
+}
+
+.review-post__form {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.review-post__field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.review-post__input,
+.review-post__select,
+.review-post__textarea,
+.review-post__file {
+	border-color: #ccc;
+	border-radius: 6px;
+	padding: 8px;
+}
+
+.review-post__select {
+	 width: 120px;
+}
+
+.review-post__file {
+	border: 1px solid #ccc;
+}
+
+.btn-review-post {
+	background-color: blue;
+	border-color: blue;
+	border-radius: 6px;
+	color: white;
+	margin: 10px auto;
+	padding: 5px 10px;
+}
+
+.btn-review-post:hover {
+	background-color: #0000cd;
+	box-shadow: 5px 0 3px #778899;
+}
+
+.review-post__error {
+	color: red;
+}
+

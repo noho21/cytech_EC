@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>購入品詳細</title>
+<script th:src="@{/js/purchase_form.js}" defer></script>
+<link th:href="@{/css/common/header.css}" rel="stylesheet">
+<link th:href="@{/css/common/footer.css}" rel="stylesheet">
+<link th:href="@{/css/pages/purchase_input.css}" rel="stylesheet">
+</head>
+<body>
+	<header th:replace="~{common/header :: layout-header}"></header>
+	
+	<h1 class="purchase__title">購入品詳細</h1>
+	
+	<div class="purchase">
+		<form class="purchase__form" method="post" 
+			  th:action="@{/purchase/confirm}"
+			  th:object="${purchaseForm}">
+			  
+			<div class="purchase__section purchase__address">
+				<p class="purchase__section-title">＜受け取り場所＞</p>
+				
+				<div class="purchase__error" th:if="${#fields.hasErrors('validAddress')}">
+		  			<span th:errors="*{validAddress}"></span>
+				</div>
+
+				<div class="purchase__option">
+					<label class="purchase__label">
+						<input type="radio" th:field="*{receivePlace}" value="REGISTERED">
+					</label>
+	
+					<div class="purchase__field purchase__address-registered">
+						<p>名前：<span th:text="${user != null ? user.userName : ''}"></span></p>
+						<p for="address">住所</p>
+						<input class="purchase__input purchase__address" type="text" th:field="*{registeredAddress}" placeholder="住所">
+						<p>アパート名等</p>
+						<input class="purchase__input purchase__building" type="text" th:field="*{registeredBuilding}" placeholder="アパート名等">
+					</div>
+				</div>	
+				
+				<div class="purchase__option">
+					<label class="purchase__label">
+						<input type="radio" th:field="*{receivePlace}" value="NEW">
+					</label>
+					
+					<div class="purchase__field purchase__address-new">	
+						<p>名前：<span th:text="${user != null ? user.userName : ''}"></span></p>
+						<p>住所</p>
+						<input class="purchase__input purchase__address" type="text" th:field="*{newAddress}" placeholder="住所">
+						<p>アパート名等</p>
+						<input class="purchase__input purchase__building" type="text" th:field="*{newBuilding}" placeholder="アパート名等">
+					</div>
+				</div>
+			</div>
+			
+			<div class="purchase__section purchase__payment">
+				<p　class="purchase__section-title">＜お支払い情報＞</p>
+				
+				<div class="purchase__error" th:if="${#fields.hasErrors('payMethod')}">
+		  			<span th:errors="*{payMethod}"></span>
+				</div>
+				
+				<div class="purchase__error" th:if="${#fields.hasErrors('validCard')}">
+		  			<span th:errors="*{validCard}"></span>
+				</div>
+		
+				<div class="purchase__error" th:if="${#fields.hasErrors('validExpiry')}">
+		  			<span th:errors="*{validExpiry}"></span>
+				</div>
+				
+				<div class="purchase__error" th:if="${#fields.hasErrors('cardFormatValid')}">
+		  			<span th:errors="*{cardFormatValid}"></span>
+				</div>
+				
+				<div class="purchase__error" th:if="${#fields.hasErrors('expiryFormatValid')}">
+		  			<span th:errors="*{expiryFormatValid}"></span>
+				</div>
+				
+				<div class="purchase__option">
+					<label class="purchase__label purchase__payment">
+						<input type="radio" th:field="*{payMethod}" value="CARD1">	
+					</label>
+						
+					<div class="purchase__field">
+						<input class="purchase__input purchase__card-number" id="cardNumber1" th:field="*{cardNumber1}" type="text" placeholder="カード番号" inputmode="numeric" maxlength="15">
+						<input class="purchase__input purchase__card-expiry" type="text" th:field="*{cardExpiry1}" placeholder="有効期限 MM/YY" maxlength="5">
+					</div>
+				</div>				
+
+				<div class="purchase__option">
+					<label class="purchase__label">
+						<input type="radio" th:field="*{payMethod}" value="CARD2">	
+					</label>
+						
+					<div class="purchase__field">
+						<input class="purchase__input purchase__card-number" id="cardNumber2" th:field="*{cardNumber2}" type="text" placeholder="カード番号" inputmode="numeric" maxlength="15">
+						<input class="purchase__input purchase__card-expiry" type="text" th:field="*{cardExpiry2}" placeholder="有効期限 MM/YY" maxlength="5">
+					</div>
+				</div>
+			</div>
+			
+			<button class="btn-purchase-confirm" type="submit">確認</button>
+			
+		</form>
+	</div>
+	
+	<footer th:replace="~{common/footer :: layout-footer}"></footer>
+</body>
+</html>
